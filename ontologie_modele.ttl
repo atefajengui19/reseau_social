@@ -1,0 +1,264 @@
+@prefix : <http://www.semanticweb.org/dhouh/ontologies/2026/4/reseau_social/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix untitled-ontology-3: <http://www.semanticweb.org/dhouh/ontologies/2026/4/untitled-ontology-3#> .
+@base <http://www.semanticweb.org/dhouh/ontologies/2026/4/reseau_social/> .
+
+<http://www.semanticweb.org/dhouh/ontologies/2026/4/reseau_social> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/dhouh/ontologies/2026/4/reseau_social#aPublie
+:aPublie rdf:type owl:ObjectProperty ;
+         rdfs:domain :Utilisateur ;
+         rdfs:range :Contenu .
+
+
+###  http://www.semanticweb.org/dhouh/ontologies/2026/4/reseau_social#cibleLeContenu
+:cibleLeContenu rdf:type owl:ObjectProperty ;
+                rdfs:domain :Interaction ;
+                rdfs:range :Contenu .
+
+
+###  http://www.semanticweb.org/dhouh/ontologies/2026/4/reseau_social#estConnecteA
+:estConnecteA rdf:type owl:ObjectProperty ;
+              rdfs:domain :Utilisateur ;
+              rdfs:range :Utilisateur .
+
+
+###  http://www.semanticweb.org/dhouh/ontologies/2026/4/reseau_social#estEnReponseA
+:estEnReponseA rdf:type owl:ObjectProperty ;
+               rdfs:domain :Interaction ;
+               rdfs:range :Interaction .
+
+
+###  http://www.semanticweb.org/dhouh/ontologies/2026/4/reseau_social#influence
+:influence rdf:type owl:ObjectProperty ;
+           rdfs:domain :LeaderDOpinion ;
+           rdfs:range :Utilisateur .
+
+
+###  http://www.semanticweb.org/dhouh/ontologies/2026/4/reseau_social#interagitAvec
+:interagitAvec rdf:type owl:ObjectProperty ;
+               rdfs:domain :Utilisateur ;
+               rdfs:range [ rdf:type owl:Class ;
+                            owl:unionOf ( :Contenu
+                                          :Interaction
+                                        )
+                          ] .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/dhouh/ontologies/2026/4/reseau_social#moisCreation
+:moisCreation rdf:type owl:DatatypeProperty ;
+              rdfs:domain [ rdf:type owl:Class ;
+                            owl:unionOf ( :Contenu
+                                          :Interaction
+                                          :Utilisateur
+                                        )
+                          ] ;
+              rdfs:range xsd:dateTime .
+
+
+###  http://www.semanticweb.org/dhouh/ontologies/2026/4/reseau_social#nombreCommentaires
+:nombreCommentaires rdf:type owl:DatatypeProperty ;
+                    rdfs:domain :Contenu ;
+                    rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/dhouh/ontologies/2026/4/reseau_social#nombreLikes
+:nombreLikes rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Contenu ;
+             rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/dhouh/ontologies/2026/4/reseau_social#nombrePartages
+:nombrePartages rdf:type owl:DatatypeProperty ;
+                rdfs:domain :Contenu ;
+                rdfs:range xsd:integer .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/dhouh/ontologies/2026/4/reseau_social#Collaboration
+:Collaboration rdf:type owl:Class ;
+               rdfs:subClassOf :InteractionPositive .
+
+
+###  http://www.semanticweb.org/dhouh/ontologies/2026/4/reseau_social#Commentaire
+:Commentaire rdf:type owl:Class ;
+             rdfs:subClassOf :InteractionNeutre .
+
+
+###  http://www.semanticweb.org/dhouh/ontologies/2026/4/reseau_social#Conflit
+:Conflit rdf:type owl:Class ;
+         rdfs:subClassOf :InteractionNegative .
+
+
+###  http://www.semanticweb.org/dhouh/ontologies/2026/4/reseau_social#Contenu
+:Contenu rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/dhouh/ontologies/2026/4/reseau_social#ContenuImmersif
+:ContenuImmersif rdf:type owl:Class ;
+                 rdfs:subClassOf :Contenu .
+
+
+###  http://www.semanticweb.org/dhouh/ontologies/2026/4/reseau_social#ContenuTextuel
+:ContenuTextuel rdf:type owl:Class ;
+                rdfs:subClassOf :Contenu .
+
+
+###  http://www.semanticweb.org/dhouh/ontologies/2026/4/reseau_social#ContenuVisuel
+:ContenuVisuel rdf:type owl:Class ;
+               rdfs:subClassOf :Contenu .
+
+
+###  http://www.semanticweb.org/dhouh/ontologies/2026/4/reseau_social#Image
+:Image rdf:type owl:Class ;
+       rdfs:subClassOf :ContenuVisuel ;
+       owl:disjointWith :VideoClassique .
+
+
+###  http://www.semanticweb.org/dhouh/ontologies/2026/4/reseau_social#Interaction
+:Interaction rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/dhouh/ontologies/2026/4/reseau_social#InteractionNegative
+:InteractionNegative rdf:type owl:Class ;
+                     rdfs:subClassOf :Interaction .
+
+
+###  http://www.semanticweb.org/dhouh/ontologies/2026/4/reseau_social#InteractionNeutre
+:InteractionNeutre rdf:type owl:Class ;
+                   rdfs:subClassOf :Interaction .
+
+
+###  http://www.semanticweb.org/dhouh/ontologies/2026/4/reseau_social#InteractionPositive
+:InteractionPositive rdf:type owl:Class ;
+                     rdfs:subClassOf :Interaction .
+
+
+###  http://www.semanticweb.org/dhouh/ontologies/2026/4/reseau_social#LeaderDOpinion
+:LeaderDOpinion rdf:type owl:Class ;
+                rdfs:subClassOf :Utilisateur .
+
+
+###  http://www.semanticweb.org/dhouh/ontologies/2026/4/reseau_social#Like
+:Like rdf:type owl:Class ;
+      rdfs:subClassOf :InteractionPositive .
+
+
+###  http://www.semanticweb.org/dhouh/ontologies/2026/4/reseau_social#Partage
+:Partage rdf:type owl:Class ;
+         rdfs:subClassOf :InteractionPositive .
+
+
+###  http://www.semanticweb.org/dhouh/ontologies/2026/4/reseau_social#RealiteAugmentee
+:RealiteAugmentee rdf:type owl:Class ;
+                  rdfs:subClassOf :ContenuImmersif ;
+                  owl:disjointWith :UtilisateurStandard ,
+                                   :Video360 .
+
+
+###  http://www.semanticweb.org/dhouh/ontologies/2026/4/reseau_social#Utilisateur
+:Utilisateur rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/dhouh/ontologies/2026/4/reseau_social#UtilisateurStandard
+:UtilisateurStandard rdf:type owl:Class ;
+                     rdfs:subClassOf :Utilisateur .
+
+
+###  http://www.semanticweb.org/dhouh/ontologies/2026/4/reseau_social#Video360
+:Video360 rdf:type owl:Class ;
+          rdfs:subClassOf :ContenuImmersif .
+
+
+###  http://www.semanticweb.org/dhouh/ontologies/2026/4/reseau_social#VideoClassique
+:VideoClassique rdf:type owl:Class ;
+                rdfs:subClassOf :ContenuVisuel .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/dhouh/ontologies/2026/4/reseau_social#Atef_Leader
+:Atef_Leader rdf:type owl:NamedIndividual ,
+                      :LeaderDOpinion ;
+             :aPublie :Video_Immersion_Total .
+
+
+###  http://www.semanticweb.org/dhouh/ontologies/2026/4/reseau_social#Charlie_Curieux
+:Charlie_Curieux rdf:type owl:NamedIndividual ,
+                          :UtilisateurStandard ;
+                 :interagitAvec :Filtre_AR_Paris .
+
+
+###  http://www.semanticweb.org/dhouh/ontologies/2026/4/reseau_social#Filtre_AR_Paris
+:Filtre_AR_Paris rdf:type owl:NamedIndividual ,
+                          :RealiteAugmentee .
+
+
+###  http://www.semanticweb.org/dhouh/ontologies/2026/4/reseau_social#Malek_Standard
+:Malek_Standard rdf:type owl:NamedIndividual ,
+                         :UtilisateurStandard ;
+                :interagitAvec :Video_Immersion_Total .
+
+
+###  http://www.semanticweb.org/dhouh/ontologies/2026/4/reseau_social#Video_Immersion_Total
+:Video_Immersion_Total rdf:type owl:NamedIndividual ,
+                                :Video360 ;
+                       :moisCreation "2026-02-16T00:00:00"^^xsd:dateTime ;
+                       :nombreLikes 150 ;
+                       :nombrePartages 20 .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Collaboration
+                :Like
+                :Partage
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Contenu
+                :Interaction
+                :Utilisateur
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :ContenuImmersif
+                :ContenuTextuel
+                :ContenuVisuel
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :InteractionNegative
+                :InteractionNeutre
+                :InteractionPositive
+              )
+] .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
