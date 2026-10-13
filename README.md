@@ -14,12 +14,6 @@ Ce projet propose une architecture complète pour extraire, sémantiser et visua
 *   **Interface Utilisateur** :
     *   `interface_streamlit.py` : Tableau de bord interactif permettant de lancer les ETL, d'explorer le graphe de connaissances (PyVis), de visualiser les métriques d'engagement et de comparer les algorithmes de centralité (PageRank, HITS, Betweenness) avec l'inférence OWL.
 
-## Anonymisation des Datasets
-
-Pour respecter les standards de confidentialité avant publication sur GitHub :
-*   **Données Kaggle (`reseau_social.csv`)** : Les identifiants réels sont remplacés par des identifiants fictifs (ex: `Kaggle_User_Anonyme_1`) lors du processus ETL.
-*   **Données Mastodon & Facebook** : Seuls les identifiants publics et les métadonnées (likes, partages, texte brut nettoyé) sont conservés et transformés en URI sémantiques. 
-
 ## 🛠️ Versions des Outils et Prérequis
 
 Pour garantir la reproductibilité, voici les versions recommandées :
